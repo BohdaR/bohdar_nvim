@@ -26,7 +26,6 @@ return {
       servers = {
         lua_ls = {},
         ruby_lsp = {},
-        -- solargraph = {},
         ts_ls = {},
         cssls = {},
         jsonls = {},
@@ -36,12 +35,36 @@ return {
     config = function(_, opts)
       local lspconfig = require('lspconfig')
 
+      -- vim.lsp.set_log_level("debug")
+
       -- LSP server configurations.
       for server, config in pairs(opts.servers) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
       end
 
+      -- Create a variable to store the timer outside the callback
+      local document_symbol_timer = nil
+      -- NOTE: Temp fix while the ruby-lsp reindexing is not working properly.
+      vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI", "TextChangedP" }, {
+        pattern = "*.rb",
+        callback = function()
+          -- Clear the previous timer if it exists
+          if document_symbol_timer then
+            vim.fn.timer_stop(document_symbol_timer)
+            document_symbol_timer = nil
+          end
+
+          -- Start a new timer with a delay (300ms)
+          document_symbol_timer = vim.fn.timer_start(300, function()
+            local bufnr = vim.api.nvim_get_current_buf()
+            vim.lsp.buf_request(bufnr,
+                               'textDocument/documentSymbol',
+                               { textDocument = vim.lsp.util.make_text_document_params() },
+                               function() end)
+          end)
+        end
+      })
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
