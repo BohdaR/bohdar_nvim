@@ -24,13 +24,16 @@ opt.mouse = 'a'
 opt.undofile = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-opt.scrolloff = 10
+opt.scrolloff = 5
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 opt.list = true
 opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+opt.spelllang = 'en_us'
+opt.spell = true
 
 -- Preview substitutions live, as you type!
 opt.inccommand = 'split'
@@ -58,3 +61,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.schedule(function()
   opt.clipboard = 'unnamedplus'
 end)
+
+
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevel = 99
