@@ -30,6 +30,7 @@ return {
         cssls = {},
         jsonls = {},
         bashls = {},
+        pylsp = {},
         yamlls = {}
       }
     },
