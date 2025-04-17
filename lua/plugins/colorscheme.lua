@@ -5,14 +5,22 @@ return {
     require('tokyonight').setup {
       styles = {
         comments = { italic = false } -- Disable italics in comments
-      }
+      },
+      on_highlights = function(highlights, colors)
+        local bg = "#16161e"
+
+        colors.bg = bg
+
+        highlights.Normal.bg = bg
+        highlights.NormalNC.bg = bg
+        highlights.NormalFloat.bg = bg
+        highlights.FloatBorder.bg = bg
+        highlights.SignColumn.bg = bg
+        highlights.NeoTreeNormal.bg = bg
+        highlights.NeoTreeNormalNC.bg = bg
+      end
     }
 
-    -- Load the colorscheme here.
-    -- Like many other themes, this one has different styles, and you could load
-    -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
     vim.cmd.colorscheme 'tokyonight-night'
-    -- Override background color for tokyonight theme
-    vim.cmd[[highlight Normal guibg=#1c1c1c]]  -- Change the background color to your desired color
   end
 }
