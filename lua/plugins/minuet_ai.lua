@@ -10,7 +10,7 @@ return {
         n_completions = 1,
         debounce_ms = 150,
         virtualtext = {
-          auto_trigger_ft = { '*' },
+          auto_trigger_ft = { 'lua', 'ruby', 'css', 'haml', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'python', 'gitcommit' },
         },
         provider_options = {
           openai_fim_compatible = {
