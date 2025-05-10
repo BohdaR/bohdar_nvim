@@ -56,7 +56,7 @@ return {
       -- Add a keymap to accept one line.
       add_minuet_keymap('<Tab>', require('minuet.virtualtext').action.accept_line)
       -- Add a keymap to accept the whole completion.
-      add_minuet_keymap('<A-j>', require('minuet.virtualtext').action.accept)
+      add_minuet_keymap('<CR>', require('minuet.virtualtext').action.accept)
     end,
   },
 }
