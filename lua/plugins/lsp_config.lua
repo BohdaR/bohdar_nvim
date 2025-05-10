@@ -6,12 +6,7 @@ return {
     end
   },
   {
-    'williamboman/mason-lspconfig.nvim',
-    config = function()
-      require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls', 'ruby_lsp', 'ts_ls', 'cssls', 'jsonls', 'yamlls' }
-      })
-    end
+    'williamboman/mason-lspconfig.nvim'
   },
   {
     'neovim/nvim-lspconfig',
@@ -48,7 +43,7 @@ return {
       -- Create a variable to store the timer outside the callback
       local document_symbol_timer = nil
       -- NOTE: Temp fix while the ruby-lsp reindexing is not working properly.
-      vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI", "TextChangedP" }, {
+      vim.api.nvim_create_autocmd({ "TextYankPost", "TextChangedP" }, {
         pattern = "*.rb",
         callback = function()
           -- Clear the previous timer if it exists
@@ -95,10 +90,6 @@ return {
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
           map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-
-          -- Fuzzy find all the symbols in your current document.
-          --  Symbols are things like variables, functions, types, etc.
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.

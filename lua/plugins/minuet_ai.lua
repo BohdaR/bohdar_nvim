@@ -10,15 +10,10 @@ return {
         n_completions = 1,
         debounce_ms = 150,
         virtualtext = {
-          auto_trigger_ft = { 'lua', 'ruby', 'css', 'haml', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'python', 'gitcommit' },
+          show_on_completion_menu = true,
+          auto_trigger_ft = { 'lua', 'ruby', 'css', 'haml', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'python', 'gitcommit', 'yaml' },
         },
         provider_options = {
-          openai_fim_compatible = {
-            api_key = 'TERM',
-            name = 'Deepseek',
-            end_point = 'http://localhost:11434/v1/completions',
-            model = 'qwen2.5-coder'
-          },
           openai = {
             model = 'gpt-4o-mini',
             stream = true,
@@ -43,11 +38,7 @@ return {
             model = 'claude-3-5-haiku-20241022',
             stream = true,
             api_key = 'ANTHROPIC_API_KEY',
-            optional = {
-              -- pass any additional parameters you want to send to claude request,
-              -- e.g.
-              -- stop_sequences = nil,
-            },
+            optional = {},
           },
         }
       }
@@ -65,7 +56,7 @@ return {
       -- Add a keymap to accept one line.
       add_minuet_keymap('<Tab>', require('minuet.virtualtext').action.accept_line)
       -- Add a keymap to accept the whole completion.
-      add_minuet_keymap('<CR>', require('minuet.virtualtext').action.accept)
+      add_minuet_keymap('<A-j>', require('minuet.virtualtext').action.accept)
     end,
   },
 }
