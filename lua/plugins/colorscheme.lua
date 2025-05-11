@@ -18,6 +18,12 @@ return {
         highlights.SignColumn.bg = bg
         highlights.NeoTreeNormal.bg = bg
         highlights.NeoTreeNormalNC.bg = bg
+
+        -- Remove background for diagnostic messages
+        highlights.DiagnosticVirtualTextHint.bg = "NONE"
+        highlights.DiagnosticVirtualTextInfo.bg = "NONE"
+        highlights.DiagnosticVirtualTextWarn.bg = "NONE"
+        highlights.DiagnosticVirtualTextError.bg = "NONE"
       end
     }
 

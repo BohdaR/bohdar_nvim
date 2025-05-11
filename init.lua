@@ -3,6 +3,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Require the split configurations
+require('config.diagnostic')
 require('config.options')
 require('config.keymaps')
 require('config.lazy')
