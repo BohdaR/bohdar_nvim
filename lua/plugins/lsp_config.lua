@@ -21,12 +21,33 @@ return {
       servers = {
         lua_ls = {},
         ruby_lsp = {},
-        ts_ls = {},
+        -- Vue JS
+        volar = {
+          filetypes = { 'vue' },
+          init_options = {
+            typescript = {
+              tsdk = vim.fn.trim(vim.fn.system('npm root -g')) .. '/typescript/lib',
+            },
+          },
+        },
+        ts_ls = {
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+          init_options = {
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+                languages = { 'vue' },
+              },
+            },
+          },
+        },
         cssls = {},
         jsonls = {},
         bashls = {},
         pylsp = {},
-        yamlls = {}
+        yamlls = {},
+        html = {},
       }
     },
     config = function(_, opts)

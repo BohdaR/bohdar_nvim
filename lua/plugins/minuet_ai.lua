@@ -1,6 +1,7 @@
 return {
   {
-    'milanglacier/minuet-ai.nvim',
+    'BohdaR/minuet-ai.nvim',
+    branch = '45-preserve-completion-items-when-user-input-matches-existing-completion-items',
     dependencies = {
       'nvim-lua/plenary.nvim'
     },
@@ -11,7 +12,12 @@ return {
         debounce_ms = 150,
         virtualtext = {
           show_on_completion_menu = true,
-          auto_trigger_ft = { 'lua', 'ruby', 'css', 'haml', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'python', 'gitcommit', 'yaml' },
+          auto_trigger_ft = {
+            'lua', 'ruby', 'css', 'haml', 'html',
+            'javascript', 'typescript', 'javascriptreact', 'typescriptreact',
+            'vue',
+            'python', 'gitcommit', 'yaml'
+          },
         },
         provider_options = {
           openai = {
