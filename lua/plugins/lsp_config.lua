@@ -64,7 +64,7 @@ return {
       -- Create a variable to store the timer outside the callback
       local document_symbol_timer = nil
       -- NOTE: Temp fix while the ruby-lsp reindexing is not working properly.
-      vim.api.nvim_create_autocmd({ "TextChanged", "TextYankPost", "TextChangedP" }, {
+      vim.api.nvim_create_autocmd({ "TextChangedI", "TextChanged", "TextYankPost", "TextChangedP" }, {
         pattern = "*.rb",
         callback = function()
           -- Clear the previous timer if it exists
