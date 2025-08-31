@@ -48,6 +48,7 @@ return {
         pylsp = {},
         yamlls = {},
         html = {},
+        clangd = { cmd = { "clangd", "--compile-commands-dir=build" } },
       }
     },
     config = function(_, opts)
