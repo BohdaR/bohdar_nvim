@@ -24,6 +24,9 @@ return {-- Fuzzy Finder (files, lsp, etc)
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
   config = function()
+    local actions = require("telescope.actions")
+    local action_state = require("telescope.actions.state")
+    local builtin = require("telescope.builtin")
     -- Telescope is a fuzzy finder that comes with a lot of different things that
     -- it can fuzzy find! It's more than just a "file finder", it can search
     -- many different aspects of Neovim, your workspace, LSP, and more!
@@ -58,6 +61,22 @@ return {-- Fuzzy Finder (files, lsp, etc)
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
+        },
+      },
+      defaults = {
+        mappings = {
+          i = {
+            ["<C-f>"] = function(prompt_bufnr) -- switch to find_files
+              local prompt = action_state.get_current_line()
+              actions.close(prompt_bufnr)
+              builtin.find_files({ default_text = prompt })
+            end,
+            ["<C-g>"] = function(prompt_bufnr) -- switch to live_grep
+              local prompt = action_state.get_current_line()
+              actions.close(prompt_bufnr)
+              builtin.live_grep({ default_text = prompt })
+            end,
+          },
         },
       },
     }
