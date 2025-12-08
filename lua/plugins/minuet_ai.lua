@@ -7,7 +7,7 @@ return {
     },
     config = function()
       require('minuet').setup {
-        provider = 'gemini',
+        provider = 'openai',
         n_completions = 1,
         debounce_ms = 150,
         virtualtext = {
