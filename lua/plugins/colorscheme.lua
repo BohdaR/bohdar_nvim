@@ -1,6 +1,7 @@
 return {
   'folke/tokyonight.nvim',
-  priority = 1000, -- Make sure to load this before all the other start plugins.
+  priority = 1000,
+
   config = function()
     require('tokyonight').setup {
       styles = {
@@ -18,6 +19,11 @@ return {
         highlights.SignColumn.bg = bg
         highlights.NeoTreeNormal.bg = bg
         highlights.NeoTreeNormalNC.bg = bg
+
+        -- ColorColumn
+        highlights.ColorColumn = {
+          bg = "#2a2a2a",
+        }
 
         -- Remove background for diagnostic messages
         highlights.DiagnosticVirtualTextHint.bg = "NONE"

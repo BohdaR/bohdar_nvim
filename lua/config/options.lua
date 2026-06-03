@@ -66,3 +66,19 @@ end)
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.o.foldlevel = 99
+
+-- Default colorcolumn
+vim.opt.colorcolumn = '80'
+
+-- ColorColumn highlight
+vim.api.nvim_set_hl(0, 'ColorColumn', {
+  bg = '#2a2a2a',
+})
+
+-- Per-filetype overrides
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'haml',
+  callback = function()
+    vim.opt_local.colorcolumn = '140'
+  end,
+})
