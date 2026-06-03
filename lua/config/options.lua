@@ -77,6 +77,13 @@ vim.api.nvim_set_hl(0, 'ColorColumn', {
 
 -- Per-filetype overrides
 vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'ruby',
+  callback = function()
+    vim.opt_local.colorcolumn = '100'
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
   pattern = 'haml',
   callback = function()
     vim.opt_local.colorcolumn = '140'
