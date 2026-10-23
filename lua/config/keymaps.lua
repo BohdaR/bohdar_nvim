@@ -8,3 +8,6 @@ vim.keymap.set("n", "<leader>rc", ':&&<CR>', { desc = "Repeat command", silent =
 vim.keymap.set("n", "<leader>gb", ':G blame<CR>', { desc = "Show [g]it [b]lame", silent = true })
 vim.keymap.set("n", "<leader>tn", function() vim.opt.relativenumber = not vim.opt.relativenumber:get() end, { desc = "[T]oggle relative line [n]umbers" })
 vim.keymap.set("n", "<leader>it", ':InspectTree<CR>', { desc = "[I]nspect tree-sitter syntax [t]ree", silent = true })
+vim.keymap.set("n", "<leader>gsh", ':Gitsigns stage_hunk<CR>', { desc = "[S]tage [h]unk", silent = true })
+vim.keymap.set("n", "<leader>grh", ':Gitsigns undo_stage_hunk<CR>', { desc = "[S]tage [h]unk", silent = true })
+vim.keymap.set("n", "<leader>rr", "<cmd>checktime<CR>", { desc = "Reload file if changed" })

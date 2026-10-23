@@ -7,16 +7,16 @@ return {
     },
     config = function()
       require('minuet').setup {
-        provider = 'openai',
+        provider = 'gemini',
         n_completions = 1,
         debounce_ms = 150,
         virtualtext = {
           show_on_completion_menu = true,
           auto_trigger_ft = {
-            'lua', 'ruby', 'css', 'haml', 'html',
-            'javascript', 'typescript', 'javascriptreact', 'typescriptreact',
-            'vue',
-            'python', 'gitcommit', 'yaml'
+            -- 'lua', 'ruby', 'css', 'haml', 'html',
+            -- 'javascript', 'typescript', 'javascriptreact', 'typescriptreact',
+            -- 'vue',
+            -- 'python', 'gitcommit', 'yaml'
           },
         },
         provider_options = {
@@ -27,7 +27,7 @@ return {
             optional = {},
           },
           gemini = {
-            model = 'gemini-2.0-flash',
+            model = 'gemini-3.8-flash',
             stream = true,
             api_key = 'GEMINI_API_KEY',
             optional = {

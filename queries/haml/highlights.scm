@@ -1,0 +1,1 @@
+/home/bohdar/my_lab/tree-sitter-haml/queries/highlights.scm

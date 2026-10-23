@@ -43,6 +43,9 @@ opt.inccommand = 'split'
 -- See `:help 'confirm'`
 opt.confirm = true
 
+-- When a file was changed outside of Nvim, automatically read it again.
+opt.autoread = true
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -62,18 +65,12 @@ vim.schedule(function()
   opt.clipboard = 'unnamedplus'
 end)
 
-
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.o.foldlevel = 99
 
 -- Default colorcolumn
-vim.opt.colorcolumn = '80'
-
--- ColorColumn highlight
-vim.api.nvim_set_hl(0, 'ColorColumn', {
-  bg = '#2a2a2a',
-})
+opt.colorcolumn = '80'
 
 -- Per-filetype overrides
 vim.api.nvim_create_autocmd('FileType', {
